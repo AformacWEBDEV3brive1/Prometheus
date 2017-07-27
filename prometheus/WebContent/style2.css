@@ -2,4 +2,25 @@
 	height:20px;
 	width:5px;
 	background-color:red;
+	display:block;
+	
+}
+
+.shoot{
+	animation-duration:2s;
+	animation-name:tirAlly;
+}
+
+@keyframes tirAlly{
+	from{
+		
+		
+	
+	}
+	to{
+		
+		margin-top:0px
+	
+	}
+	
 }
