@@ -31,3 +31,8 @@ body #plateau .ligne img{
     width:60px;
 }
 
+.coeur{
+    height: 20px;
+    width: 20px;
+    
+}
