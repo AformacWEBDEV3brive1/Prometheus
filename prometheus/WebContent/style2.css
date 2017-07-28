@@ -1,4 +1,8 @@
-.missile{
+body{
+    
+}
+
+body .missile{
     height:20px;
     width:5px;
     background-color:red;
@@ -6,15 +10,24 @@
 
 }
 
-#vaisseau{
+body #vaisseau{
     height: 30px;
     width: 80px;
-    margin-top: 800px;
+    position:absolute;
+    bottom: 0px;
 
 }
 
-.vaisseau{
+body .vaisseau{
     height: 100px;
     width: 80px;
+}
+
+body #plateau .ligne{
+    display: flex;
+}
+
+body #plateau .ligne img{
+    width:60px;
 }
 
