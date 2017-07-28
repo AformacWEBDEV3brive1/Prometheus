@@ -73,4 +73,24 @@ function direction(event) {
 // fin déplacement
 
 
-
+function go(){
+    
+    console.log("debut de la fonction go");
+    
+    var marginTop_Ets = 0;
+    var interval;
+    
+    interval = setInterval(function(){
+        console.log("appel de la fonction anonyme pour deplacement des ETs : "+marginTop_Ets);
+        document.getElementById("plateau").style.marginTop = marginTop_Ets + "px";
+        //marginTop_Ets = marginTop_Ets + 5; => équivaut à la ligne d'en dessous
+        marginTop_Ets += 5 ; 
+        
+        if(marginTop_Ets > 500 ){
+            clearInterval(interval);
+        }
+        
+    }, 1000);
+    
+    console.log("fin de la fonction go");
+}
