@@ -1,32 +1,35 @@
-function formulaire(){
-    
- /*   formulaire = document.createElement("div");
-    formulaire.id = "formulaire";
-    formulaire.style.width = "50px";
-    formulaire.style.height = "50px";
-    formulaire.style.marginTop = "auto"
-    formulaire.style.marginLeft = "auto";
-    formulaire.style.marginRight = "auto";
-    formulaire.style.marginBottom = "auto";
-    formulaire.style.backgroundColor = "Black";
-    formulaire.style.border = "1px, white, solid";
-    formulaire.style.color = "white";*/
+function formulaire() {
+
+    /*   formulaire = document.createElement("div");
+     formulaire.id = "formulaire";
+     formulaire.style.width = "50px";
+     formulaire.style.height = "50px";
+     formulaire.style.marginTop = "auto"
+     formulaire.style.marginLeft = "auto";
+     formulaire.style.marginRight = "auto";
+     formulaire.style.marginBottom = "auto";
+     formulaire.style.backgroundColor = "Black";
+     formulaire.style.border = "1px, white, solid";
+     formulaire.style.color = "white";*/
     var jouer = confirm("Voulez vous jouer ?");
-    if (jouer == true){
+    if (jouer == true) {
         go();
+    }else {
+        confirm("toto : 1 000 000 points");
     }
-    
-} 
+
+
+}
 
 
 function missile() {
 
     var vie = document.getElementById("vie").clientHeight;
-    
+
     var missile = document.getElementById("missile");
 
     if (event.keyCode == 90) {
-        console.log("l'element nexiste pas");
+       
         projectile = document.createElement("div");
         projectile.id = "missile";
         projectile.style.width = "10px";
@@ -36,12 +39,11 @@ function missile() {
         projectile.style.position = "absolute";
         projectile.style.left = document.getElementById("vaisseau").style.marginLeft;
         var vaisseau = document.getElementById("vaisseau");
-        
+
 
         document.body.insertBefore(projectile, vaisseau);
-        
-        
-        
+
+
     }
 
     missile = document.getElementById("missile");
@@ -52,11 +54,10 @@ function missile() {
 
 
 
-    console.log(" html : " + html + " body : " + body);
+   
 
     var plateau = parseInt(document.getElementById("plateau").clientHeight);
-    console.log("vie : " + vie + " go : " + go + " plateau : " + plateau);
-    console.log("l'element existe");
+   
     var distance = parseInt(document.getElementById("missile").style.bottom);
 
 
@@ -71,15 +72,36 @@ function missile() {
             clearInterval(process);
             suppr(missile);
             removeElement(plateau);
-
+           var pseudo = prompt("Vous obtenez 1 000 000 points! \nEntrez votre pseudo :");
         }
-
-
+       
     }, 1);
+    
+    }
     // Suppression de la div.
+function createCookie(name,value,days) {
+	if (days) {
+		var date = new Date();
+		date.setTime(date.getTime()+(days*24*60*60*1000));
+		var expires = "; expires="+date.toGMTString();
+	}
+	else var expires = "";
+    document.cookie='cookie1=pseudo; expires=sun, 6 Aug 2017 00:00:00 UTC; path=/Prometheus/prometheus/WebContent/index.html'
 
+}
+function readCookie(name) {
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return null;
+}
 
-
+function eraseCookie(name) {
+	createCookie(name,"",-1);
 }
 //si le missile touche ou sort de l'ecran il disparait
 
@@ -132,7 +154,8 @@ function go() {
     var interval;
 
     interval = setInterval(function () {
-        console.log("appel de la fonction anonyme pour deplacement des ETs : " + marginTop_Ets);
+        var plateau=document.getElementById("plateau");
+       if(plateau != null){
         document.getElementById("plateau").style.marginTop = marginTop_Ets + "px";
         //marginTop_Ets = marginTop_Ets + 5; => équivaut à la ligne d'en dessous
         marginTop_Ets += 5;
@@ -140,8 +163,9 @@ function go() {
         if (marginTop_Ets > 500) {
             clearInterval(interval);
         }
-
+}
     }, 1000);
+    
 
     console.log("fin de la fonction go");
 }
