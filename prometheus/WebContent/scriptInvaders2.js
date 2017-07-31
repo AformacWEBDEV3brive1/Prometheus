@@ -12,7 +12,7 @@ function formulaire() {
 }
 
 // tire un missile
-function missile() {
+function missile(event) {
 
     
     var vie = document.getElementById("vie").clientHeight;

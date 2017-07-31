@@ -7,7 +7,7 @@
 
         <title>prometheus</title>
     </head>
-    <body onload="formulaire()" onkeydown="missile()" >
+    <body onload="formulaire()" onkeydown="missile(event)" >
         <div  id="vie">
             <img class="coeur" src="Image/coeur.png" alt="coeur">
             <img class="coeur" src="Image/coeur.png" alt="coeur">
@@ -66,8 +66,8 @@
 
         
 
-        <div id="vaisseau" style="margin-left:800px;">
-            <img class="vaisseau" src="image/Vaisseau.png" alt="vaisseau">
+        <div id="vaisseau" onkeydown="direction()" style="margin-left:800px;">
+            <img class="vaisseau" src="Image/Vaisseau.png" alt="vaisseau">
         </div>
 
 
