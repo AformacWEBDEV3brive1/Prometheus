@@ -1,16 +1,6 @@
 function formulaire() {
 
-    /*   formulaire = document.createElement("div");
-     formulaire.id = "formulaire";
-     formulaire.style.width = "50px";
-     formulaire.style.height = "50px";
-     formulaire.style.marginTop = "auto"
-     formulaire.style.marginLeft = "auto";
-     formulaire.style.marginRight = "auto";
-     formulaire.style.marginBottom = "auto";
-     formulaire.style.backgroundColor = "Black";
-     formulaire.style.border = "1px, white, solid";
-     formulaire.style.color = "white";*/
+ // ouvre les popin de debut de jeu
     var jouer = confirm("Voulez vous jouer ?");
     if (jouer == true) {
         go();
@@ -21,15 +11,18 @@ function formulaire() {
 
 }
 
-
+// tire un missile
 function missile() {
 
+    
     var vie = document.getElementById("vie").clientHeight;
 
     var missile = document.getElementById("missile");
 
+//si la touche z est enfoncée
     if (event.keyCode == 90) {
        
+       //creation du div missile et custom 
         projectile = document.createElement("div");
         projectile.id = "missile";
         projectile.style.width = "10px";
@@ -40,7 +33,7 @@ function missile() {
         projectile.style.left = document.getElementById("vaisseau").style.marginLeft;
         var vaisseau = document.getElementById("vaisseau");
 
-
+        //insertion du div missile
         document.body.insertBefore(projectile, vaisseau);
 
 
@@ -67,7 +60,7 @@ function missile() {
         missile.style.bottom = distance + "px";
 
 
-        // console.log("distance : "+distance+" plateau : "+plateau);
+        //collision du missile du plateau
         if (distance > (html - cible)) {
             clearInterval(process);
             suppr(missile);
@@ -118,24 +111,25 @@ function removeElement(et) {
 //Déplacer le vaisseau sur la droite et la gauche
 document.addEventListener('keydown', direction, false);
 function direction(event) {
-
+    //le vaisseau va à gauche
     if (event.keyCode == 81) {
         var vaisseau = parseInt(document.getElementById("vaisseau").style.marginLeft);
         vaisseau = vaisseau - 50;
         document.getElementById("vaisseau").style.marginLeft = vaisseau + "px";
     }
+    // bouge de 5px
     var x = parseInt(document.getElementById("vaisseau").style.marginLeft);
     if (x <= -5) {
         x = -5;
         document.getElementById("vaisseau").style.marginLeft = x + "px";
     }
-
+    //le vaisseau va à droite
     if (event.keyCode == 68) {
         var vaisseau = parseInt(document.getElementById("vaisseau").style.marginLeft);
         vaisseau = vaisseau + 50;
         document.getElementById("vaisseau").style.marginLeft = vaisseau + "px";
     }
-
+    //bouge de 5 px
     var x = parseInt(document.getElementById("vaisseau").style.marginLeft);
     if (x >= 1800) {
         x = 1800;
@@ -146,13 +140,12 @@ function direction(event) {
 // fin déplacement
 
 
+// debut du mouvement du plateau(extra terrestres)
 function go() {
-
-    console.log("debut de la fonction go");
 
     var marginTop_Ets = 0;
     var interval;
-
+// ralentir leur mouvement
     interval = setInterval(function () {
         var plateau=document.getElementById("plateau");
        if(plateau != null){
@@ -160,6 +153,7 @@ function go() {
         //marginTop_Ets = marginTop_Ets + 5; => équivaut à la ligne d'en dessous
         marginTop_Ets += 5;
 
+//arrêter leur descente
         if (marginTop_Ets > 500) {
             clearInterval(interval);
         }
@@ -167,5 +161,4 @@ function go() {
     }, 1000);
     
 
-    console.log("fin de la fonction go");
 }
